@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Hub - Search & Download MP3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+        }
+        header {
+            background: #1DB954;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .search-container {
+            text-align: center;
+            margin: 20px;
+        }
+        input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            font-size: 18px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 18px;
+            background: #1DB954;
+            border: none;
+            cursor: pointer;
+            color: white;
+        }
+        .song-list {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        .song {
+            background: #282828;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .song h3 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .song audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .download-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: #1DB954;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>🎵 Song Hub - Search & Download MP3 🎶</header>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for songs...">
+        <button onclick="searchSongs()">Search</button>
+    </div>
+
+    <div class="song-list" id="songList">
+        <!-- Songs will be displayed here -->
+        <div class="song">
+            <h3>Sample Song 1</h3>
+            <audio controls>
+                <source src="sample1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <a href="sample1.mp3" download class="download-btn">Download MP3</a>
+        </div>
+        <div class="song">
+            <h3>Sample Song 2</h3>
+            <audio controls>
+                <source src="sample2.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <a href="sample2.mp3" download class="download-btn">Download MP3</a>
+        </div>
+    </div>
+
+    <script>
+        function searchSongs() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let songs = document.getElementsByClassName('song');
+            for (let song of songs) {
+                let title = song.getElementsByTagName('h3')[0].innerText.toLowerCase();
+                if (title.includes(input)) {
+                    song.style.display = "block";
+                } else {
+                    song.style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
